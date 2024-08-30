@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface IUserTransactions extends CrudGeneric<RequestUsers, ResponseUser,Long> {
    List<UserEntity>  AllUsers();
+
 }

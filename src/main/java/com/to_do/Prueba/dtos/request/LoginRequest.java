@@ -5,12 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Builder
-public class RequestUsers {
-    private String fullName;
-    private String userName;
-    private String password;
+@AllArgsConstructor
+@NoArgsConstructor
+public class LoginRequest {
+    String username;
+    String password;
 }
