@@ -1,18 +1,16 @@
 package com.to_do.Prueba.dtos.request;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RegisterRequest {
-
-    String fullname;
-    String username;
-    String password;
+@Data
+@Builder
+public class RequestTask {
+   public String name_list;
+   public String state;
+   public Long id_user;
 }

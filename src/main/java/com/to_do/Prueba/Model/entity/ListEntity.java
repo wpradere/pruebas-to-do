@@ -1,7 +1,6 @@
 package com.to_do.Prueba.Model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,6 +22,7 @@ public class ListEntity {
     private Long id_user;
     private LocalDate date_start;
     private LocalDate date_update;
+
 
 
 }

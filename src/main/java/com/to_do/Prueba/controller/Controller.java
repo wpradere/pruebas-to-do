@@ -3,6 +3,7 @@ package com.to_do.Prueba.controller;
 import com.to_do.Prueba.Model.entity.UserEntity;
 import com.to_do.Prueba.dtos.request.RequestUsers;
 import com.to_do.Prueba.dtos.response.ResponseUser;
+import com.to_do.Prueba.service.implemt.IAuthtrans;
 import com.to_do.Prueba.service.implemt.IUserTransactions;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import java.util.List;
 public class Controller {
 
     IUserTransactions iUserTransactions;
+
 
     @GetMapping("/users")
     public List<UserEntity>  allData(){
