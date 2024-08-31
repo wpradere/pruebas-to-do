@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class RequestTaskUpdate {
 
-    public Long id;
+    public Long id_list;
     public String state;
 }

@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class ResponUpdateTask {
-    public Long id;
+    public Long id_list;
     public String name_list;
     public String state;
     public LocalDate date_start;

@@ -11,6 +11,6 @@ public interface IListTransaction  extends CrudGeneric<RequestTask, ResponseTask
     ResponseTask createTask (RequestTask task);
 
     ResponUpdateTask updateTask (RequestTaskUpdate task);
-    ResponUpdateTask deleteTask (RequestDeleteTask task);
+    ResponseTask deleteTask (RequestDeleteTask task);
 
 }

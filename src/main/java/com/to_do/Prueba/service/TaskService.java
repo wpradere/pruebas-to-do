@@ -38,11 +38,11 @@ public class TaskService implements IListTransaction {
         UserEntity userSession =  userRepository.findByUsername(user).orElseThrow();
 
         var task = ListEntity.builder()
-                .name_list(request.name_list)
+                .nameList(request.name_list)
                 .state(request.state)
-                .id_user(userSession.getId())
-                .date_start(LocalDate.now())
-                .date_update(LocalDate.now())
+                .idUser(userSession.getId())
+                .dateStart(LocalDate.now())
+                .dateUpdate(LocalDate.now())
                 .build();
 
         listRepository.save(task);
@@ -54,17 +54,24 @@ public class TaskService implements IListTransaction {
 
     @Override
     public ResponUpdateTask updateTask(RequestTaskUpdate request) {
-        var taskUpdate = listRepository.findById(request.id).orElseThrow();
+        var taskUpdate = listRepository.findById(request.id_list).orElseThrow();
         taskUpdate.setState(request.state);
-        taskUpdate.setDate_update(LocalDate.now());
+        taskUpdate.setDateUpdate(LocalDate.now());
         listRepository.save(taskUpdate);
         return this.entityToResponse(taskUpdate);
     }
 
     @Override
-    public ResponUpdateTask deleteTask(RequestDeleteTask task) {
-        return null;
+    public ResponseTask deleteTask(RequestDeleteTask task) {
+        var taskDelete = listRepository.findById(task.id).orElseThrow();
+        listRepository.delete(taskDelete);
+        return ResponseTask.builder()
+                .Message("task Was eleminated")
+                .build();
     }
+
+
+
 
     private ResponUpdateTask entityToResponse(ListEntity entity){
         var response = new ResponUpdateTask();

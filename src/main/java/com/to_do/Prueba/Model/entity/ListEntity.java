@@ -18,12 +18,17 @@ public class ListEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_list;
-    private String name_list;
+    @Column(name = "id_list")
+    private Long idList;
+    @Column(name = "name_list")
+    private String nameList;
     private String state;
-    private Long id_user;
-    private LocalDate date_start;
-    private LocalDate date_update;
+    @Column(name = "id_user")
+    private Long idUser;
+    @Column(name = "date_start")
+    private LocalDate dateStart;
+    @Column(name = "date_update")
+    private LocalDate dateUpdate;
 
 
 
