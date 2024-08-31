@@ -15,7 +15,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.security.web.context.SecurityContextHolderFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,11 +29,15 @@ public class JwtAutenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+
+    String token;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException, ExpiredJwtException {
 
-        final String token = getTokenFromRequest(request);
+       this.token = getTokenFromRequest(request);
         final String username;
+
 
         if(token==null){
             filterChain.doFilter(request,response);
@@ -56,7 +59,7 @@ public class JwtAutenticationFilter extends OncePerRequestFilter {
     }
 
     /*se toma el token del request y se divide despues del Bearer */
-    private String getTokenFromRequest(HttpServletRequest request) {
+    public String getTokenFromRequest(HttpServletRequest request) {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         if(StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer "))
@@ -65,6 +68,12 @@ public class JwtAutenticationFilter extends OncePerRequestFilter {
         }
         return null;
     }
+
+    public String getTokenFilter(){
+        return this.token;
+    }
+
+
 
 
 }

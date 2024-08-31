@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class ResponseList {
+public class ResponseTask {
     public String Message;
 }

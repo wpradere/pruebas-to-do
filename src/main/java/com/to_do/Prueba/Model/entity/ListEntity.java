@@ -17,8 +17,10 @@ import java.time.LocalDate;
 public class ListEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_list;
     private String name_list;
+    private String state;
     private Long id_user;
     private LocalDate date_start;
     private LocalDate date_update;

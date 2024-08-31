@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class RequestTask {
-   public String name_list;
-   public String state;
+public class RequestDeleteTask {
+    public Long id;
 }

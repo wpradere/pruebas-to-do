@@ -27,17 +27,13 @@ public class AuthService  implements IAuthtrans {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
 
-    @Override
-    public AuthResponse create(LoginRequest request) {
-        return null;
-    }
+
 
     @Override
     public AuthResponse login(LoginRequest request) {
 
-        //System.out.println(request.getUsername() +" "+ request.getPassword());
+
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),request.getPassword()));
-        //System.out.println(request.getUsername());
         UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
         System.out.println(user);
         String token = jwtService.getToken(user);

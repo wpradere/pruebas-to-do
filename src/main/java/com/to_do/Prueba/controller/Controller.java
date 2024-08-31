@@ -1,9 +1,11 @@
 package com.to_do.Prueba.controller;
 
 import com.to_do.Prueba.Model.entity.UserEntity;
-import com.to_do.Prueba.dtos.request.RequestUsers;
-import com.to_do.Prueba.dtos.response.ResponseUser;
-import com.to_do.Prueba.service.implemt.IAuthtrans;
+import com.to_do.Prueba.dtos.request.RequestTask;
+import com.to_do.Prueba.dtos.request.RequestTaskUpdate;
+import com.to_do.Prueba.dtos.response.ResponUpdateTask;
+import com.to_do.Prueba.dtos.response.ResponseTask;
+import com.to_do.Prueba.service.implemt.IListTransaction;
 import com.to_do.Prueba.service.implemt.IUserTransactions;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,9 @@ import java.util.List;
 @RequestMapping("todo")
 public class Controller {
 
-    IUserTransactions iUserTransactions;
+    private final IUserTransactions iUserTransactions;
+    private final IListTransaction iListTransaction;
+
 
 
     @GetMapping("/users")
@@ -27,9 +31,15 @@ public class Controller {
     }
 
 
-    @PostMapping("/createUser")
-    public ResponseEntity<ResponseUser> createUser ( @RequestBody RequestUsers user){
-       return ResponseEntity.ok( iUserTransactions.create(user));
+    @PostMapping("createTask")
+    public  ResponseEntity<ResponseTask> createTask (@RequestBody RequestTask request){
+        return ResponseEntity.ok(iListTransaction.createTask(request));
     }
+
+    @PutMapping("updateTask")
+    public  ResponseEntity<ResponUpdateTask> UpdateTask (@RequestBody RequestTaskUpdate request){
+        return ResponseEntity.ok(iListTransaction.updateTask(request));
+    }
+
 
 }
