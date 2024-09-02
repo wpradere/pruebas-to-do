@@ -12,9 +12,9 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class ResponUpdateTask {
-    public Long id_list;
-    public String name_list;
+    public Long idList;
+    public String nameList;
     public String state;
-    public LocalDate date_start;
-    public LocalDate date_update;
+    public LocalDate dateStart;
+    public LocalDate dateUpdate;
 }

@@ -8,6 +8,6 @@ import java.util.Optional;
 
 public interface ListRepository extends JpaRepository<ListEntity,Long> {
 
-        List<ListEntity> findByIdUser (Long id_user);
+       List<ListEntity> findByIdUser (Long id_user);
 
 }

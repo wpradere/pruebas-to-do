@@ -11,6 +11,7 @@ import com.to_do.Prueba.dtos.response.ResponUpdateTask;
 import com.to_do.Prueba.dtos.response.ResponseTask;
 import com.to_do.Prueba.jwt.JwtAutenticationFilter;
 import com.to_do.Prueba.service.implemt.IListTransaction;
+import com.to_do.Prueba.utils.exceptions.IdNotFoundExceptions;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -63,7 +64,7 @@ public class TaskService implements IListTransaction {
 
     @Override
     public ResponseTask deleteTask(RequestDeleteTask task) {
-        var taskDelete = listRepository.findById(task.id).orElseThrow();
+        var taskDelete = listRepository.findById(task.id).orElseThrow(()->new IdNotFoundExceptions("transaction"));
         listRepository.delete(taskDelete);
         return ResponseTask.builder()
                 .Message("task Was eleminated")

@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
+
 
 
 @Entity(name ="list" )
@@ -30,6 +32,9 @@ public class ListEntity {
     @Column(name = "date_update")
     private LocalDate dateUpdate;
 
+//    @ManyToOne(fetch = FetchType.LAZY )
+//    @JoinColumn (name = "iduser")
+//    private UserEntity user;
 
 
 }

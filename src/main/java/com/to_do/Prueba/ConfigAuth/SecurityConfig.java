@@ -17,6 +17,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 
+    private static final String[] WHITE_LIST_URL = { "/auth/**","/api/v1/auth/**", "/v2/api-docs", "/v3/api-docs",
+            "/v3/api-docs/**", "/swagger-resources", "/swagger-resources/**", "/configuration/ui",
+            "/configuration/security", "/swagger-ui/**", "/webjars/**", "/swagger-ui.html",
+            "/api/test/**"};
+
 
 
     /* crea metodo de filtros de seguridad donde se deshabilita el csrf y se crean rutas privadas y publicas */
@@ -35,7 +40,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authRequest ->
                  authRequest
-                         .requestMatchers("/auth/**","To-Do/swagger-ui/index.html")
+                         .requestMatchers(WHITE_LIST_URL)
                          .permitAll()
                          .anyRequest().authenticated()
                 )

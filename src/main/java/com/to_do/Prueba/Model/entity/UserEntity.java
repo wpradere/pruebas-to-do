@@ -36,6 +36,11 @@ public class UserEntity implements UserDetails {
     @Column(name = "password")
     private String password;
 
+//    @OneToMany(fetch = FetchType.LAZY
+//    ,mappedBy = "user"
+//    ,cascade = CascadeType.ALL)
+//    List<ListEntity> listUser;
+
 
 
     @Override
